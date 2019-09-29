@@ -15,14 +15,14 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <Link to="/users">Users</Link>
+                    <Link to="/">Users</Link>|
                     <Link to="/pizza">Pizza</Link>
                 </div>
 
                 <div>
-                    <Route to="/" exact component={Users}/>
+                    <Route path="/" exact component={Users}/>
                     {/* <Route to="/pizza" component={AsynPizzaOld}/> */}
-                    <Route to="/pizza" exact render={()=><Suspense fallback={<div>Loading...</div>}><AsyncPizza/></Suspense>} /> 
+                    <Route path="/pizza" exact render={()=><Suspense fallback={<div>Loading...</div>}><AsyncPizza/></Suspense>} /> 
                 </div>
             </div>
         );
