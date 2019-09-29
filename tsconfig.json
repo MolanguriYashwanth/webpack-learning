@@ -10,7 +10,7 @@
         "baseUrl": "."
     },
     "include": [
-        "src/**/*"
+        "src/**/*", "webpack.prod.config.js"
     ],
     "exclude": [
         "node_modules",
