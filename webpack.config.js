@@ -22,15 +22,25 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader', options: {
-                        presets: ['@babel/preset-env',"@babel/preset-react", '@babel/typescript']
+                        presets: ['@babel/preset-env', "@babel/preset-react", '@babel/typescript']
                     }
                 }
             },
             {
-                test: [/.css$/],
+                test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                            importLoaders: 1,
+                            modules: {
+                                localIdentName: "[name]__[local]___[hash:base64:5]",
+                            }
+                        }
+                    }
+
                 ],
                 exclude: /node_modules/
             },
@@ -48,6 +58,7 @@ module.exports = {
             }
         ]
     },
+    stats: { children: false },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Webpack 4 Starter',
@@ -60,6 +71,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css'
-           })
+        })
     ]
 };
